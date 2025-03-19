@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+  ticket-booking:
+    image: postgres:17-alpine3.21
+    container_name: ticket-booking
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: pass
+      POSTGRES_DB: ticket_booking
+    volumes:
+      - ./database/create_tables.sql:/docker-entrypoint-initdb.d/init.sql
