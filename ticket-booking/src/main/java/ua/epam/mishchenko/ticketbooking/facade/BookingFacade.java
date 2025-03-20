@@ -18,7 +18,7 @@ public interface BookingFacade {
      * Gets event by its id.
      * @return Event.
      */
-    Event getEventById(long eventId);
+    Event getEventById(org.bson.types.ObjectId eventId);
 
     /**
      * Get list of events by matching title. Title is matched using 'contains' approach.
@@ -59,13 +59,13 @@ public interface BookingFacade {
      * @param eventId Event id.
      * @return Flag that shows whether event has been deleted.
      */
-    boolean deleteEvent(long eventId);
+    boolean deleteEvent(org.bson.types.ObjectId eventId);
 
     /**
      * Gets user by its id.
      * @return User.
      */
-    User getUserById(long userId);
+    User getUserById(org.bson.types.ObjectId userId);
 
     /**
      * Gets user by its email. Email is strictly matched.
@@ -102,7 +102,7 @@ public interface BookingFacade {
      * @param userId User id.
      * @return Flag that shows whether user has been deleted.
      */
-    boolean deleteUser(long userId);
+    boolean deleteUser(org.bson.types.ObjectId userId);
 
     /**
      * Book ticket for a specified event on behalf of specified user.
@@ -113,7 +113,7 @@ public interface BookingFacade {
      * @return Booked ticket object.
      * @throws IllegalStateException if this place has already been booked.
      */
-    Ticket bookTicket(long userId, long eventId, int place, Category category);
+    Ticket bookTicket(org.bson.types.ObjectId userId, org.bson.types.ObjectId eventId, int place, Category category);
 
     /**
      * Get all booked tickets for specified user. Tickets should be sorted by event date in descending order.
@@ -135,9 +135,9 @@ public interface BookingFacade {
 
     /**
      * Cancel ticket with a specified id.
-     * @param ticketId Ticket id.
+     * @param objectIdId Ticket id.
      * @return Flag whether anything has been canceled.
      */
-    boolean cancelTicket(long ticketId);
+    boolean cancelTicket(org.bson.types.ObjectId objectIdId);
 
 }

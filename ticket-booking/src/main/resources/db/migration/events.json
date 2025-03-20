@@ -1,0 +1,16 @@
+[
+  {
+    "_id": "65a7f6d3c1e3b123a8e98ce3",
+    "title": "Stand-up Comedy",
+    "date": "2025-06-05T21:00:00Z",
+    "ticket_price": 29.99,
+    "tickets": ["65a8f8e4c1e3b234a8e98cdf", "65a8f8e4c1e3b234a8e98ce0"]
+  },
+  {
+    "_id": "65a7f6d3c1e3b123a8e98ce4",
+    "title": "Rock Festival",
+    "date": "2025-07-10T19:00:00Z",
+    "ticket_price": 99.99,
+    "tickets": ["65a8f8e4c1e3b234a8e98ce1", "65a8f8e4c1e3b234a8e98ce2"]
+  }
+]

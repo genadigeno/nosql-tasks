@@ -1,0 +1,71 @@
+{
+  "events": [
+    {
+      "_id": "65a7f6d3c1e3b234a8e98ce0",
+      "title": "Rock Festival",
+      "date": "2025-04-15T20:00:00Z",
+      "ticket_price": 99.99
+    },
+    {
+      "_id": "65a7f6d3c1e3b234a8e98ce1",
+      "title": "Jazz Night",
+      "date": "2025-04-20T19:00:00Z",
+      "ticket_price": 49.99
+    },
+    {
+      "_id": "65a7f6d3c1e3b234a8e98ce2",
+      "title": "Tech Conference",
+      "date": "2025-05-10T09:00:00Z",
+      "ticket_price": 199.99
+    },
+    {
+      "_id": "65a7f6d3c1e3b234a8e98ce3",
+      "title": "Stand-up Comedy",
+      "date": "2025-06-05T21:00:00Z",
+      "ticket_price": 29.99
+    },
+    {
+      "_id": "65a7f6d3c1e3b234a8e98ce4",
+      "title": "Football Match",
+      "date": "2025-07-01T18:00:00Z",
+      "ticket_price": 79.99
+    }
+  ],
+  "tickets": [
+    {
+      "_id": "65a8f8e4c1e3b234a8e98cdf",
+      "user_id": "65a7f9d3c1e3b234a8e98ce1",
+      "event_id": "65a7f6d3c1e3b234a8e98ce0",
+      "place": 101,
+      "category": "VIP"
+    },
+    {
+      "_id": "65a8f8e4c1e3b234a8e98ce0",
+      "user_id": "65a7f9d3c1e3b234a8e98ce2",
+      "event_id": "65a7f6d3c1e3b234a8e98ce1",
+      "place": 202,
+      "category": "STANDARD"
+    },
+    {
+      "_id": "65a8f8e4c1e3b234a8e98ce1",
+      "user_id": "65a7f9d3c1e3b234a8e98ce3",
+      "event_id": "65a7f6d3c1e3b234a8e98ce2",
+      "place": 303,
+      "category": "PREMIUM"
+    },
+    {
+      "_id": "65a8f8e4c1e3b234a8e98ce2",
+      "user_id": "65a7f9d3c1e3b234a8e98ce4",
+      "event_id": "65a7f6d3c1e3b234a8e98ce3",
+      "place": 404,
+      "category": "VIP"
+    },
+    {
+      "_id": "65a8f8e4c1e3b234a8e98ce3",
+      "user_id": "65a7f9d3c1e3b234a8e98ce5",
+      "event_id": "65a7f6d3c1e3b234a8e98ce4",
+      "place": 505,
+      "category": "STANDARD"
+    }
+  ]
+}

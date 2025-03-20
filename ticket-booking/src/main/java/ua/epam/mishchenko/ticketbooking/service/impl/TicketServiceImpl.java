@@ -8,11 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
-import ua.epam.mishchenko.ticketbooking.model.Category;
-import ua.epam.mishchenko.ticketbooking.model.Event;
+import ua.epam.mishchenko.ticketbooking.model.*;
 import ua.epam.mishchenko.ticketbooking.model.Ticket;
-import ua.epam.mishchenko.ticketbooking.model.User;
-import ua.epam.mishchenko.ticketbooking.model.UserAccount;
 import ua.epam.mishchenko.ticketbooking.repository.EventRepository;
 import ua.epam.mishchenko.ticketbooking.repository.TicketRepository;
 import ua.epam.mishchenko.ticketbooking.repository.UserAccountRepository;
@@ -61,7 +58,7 @@ public class TicketServiceImpl implements TicketService {
      */
     @Override
     @Transactional(isolation = Isolation.SERIALIZABLE)
-    public Ticket bookTicket(long userId, long eventId, int place, Category category) {
+    public Ticket bookTicket(org.bson.types.ObjectId userId, org.bson.types.ObjectId eventId, int place, Category category) {
         log.info("Start booking a ticket for user with id {}, event with id event {}, place {}, category {}",
                 userId, eventId, place, category);
         try {
@@ -75,7 +72,7 @@ public class TicketServiceImpl implements TicketService {
         }
     }
 
-    private Ticket processBookingTicket(long userId, long eventId, int place, Category category) {
+    private Ticket processBookingTicket(org.bson.types.ObjectId userId, org.bson.types.ObjectId eventId, int place, Category category) {
         throwRuntimeExceptionIfUserNotExist(userId);
         throwRuntimeExceptionIfEventNotExist(eventId);
         throwRuntimeExceptionIfTicketAlreadyBooked(eventId, place, category);
@@ -88,7 +85,7 @@ public class TicketServiceImpl implements TicketService {
         return ticket;
     }
 
-    private Ticket saveBookedTicket(long userId, long eventId, int place, Category category) {
+    private Ticket saveBookedTicket(org.bson.types.ObjectId userId, org.bson.types.ObjectId eventId, int place, Category category) {
         return ticketRepository.save(createNewTicket(userId, eventId, place, category));
     }
 
@@ -109,29 +106,29 @@ public class TicketServiceImpl implements TicketService {
         }
     }
 
-    private void throwRuntimeExceptionIfTicketAlreadyBooked(long eventId, int place, Category category) {
+    private void throwRuntimeExceptionIfTicketAlreadyBooked(org.bson.types.ObjectId eventId, int place, Category category) {
         if (ticketRepository.existsByEventIdAndPlaceAndCategory(eventId, place, category)) {
             throw new RuntimeException("This ticket already booked");
         }
     }
 
-    private Event getEvent(long eventId) {
+    private Event getEvent(org.bson.types.ObjectId eventId) {
         return eventRepository.findById(eventId)
                 .orElseThrow(() -> new RuntimeException("Can not to find an event by id: " + eventId));
     }
 
-    private UserAccount getUserAccount(long userId) {
+    private UserAccount getUserAccount(org.bson.types.ObjectId userId) {
         return userAccountRepository.findByUserId(userId)
                 .orElseThrow(() -> new RuntimeException("Can not to find a user account by user id: " + userId));
     }
 
-    private void throwRuntimeExceptionIfEventNotExist(long eventId) {
+    private void throwRuntimeExceptionIfEventNotExist(org.bson.types.ObjectId eventId) {
         if (!eventRepository.existsById(eventId)) {
             throw new RuntimeException("The event with id " + eventId + " does not exist");
         }
     }
 
-    private void throwRuntimeExceptionIfUserNotExist(long userId) {
+    private void throwRuntimeExceptionIfUserNotExist(org.bson.types.ObjectId userId) {
         if (!userRepository.existsById(userId)) {
             throw new RuntimeException("The user with id " + userId + " does not exist");
         }
@@ -150,7 +147,7 @@ public class TicketServiceImpl implements TicketService {
      * @param category the category
      * @return the ticket
      */
-    private Ticket createNewTicket(long userId, long eventId, int place, Category category) {
+    private Ticket createNewTicket(org.bson.types.ObjectId userId, org.bson.types.ObjectId eventId, int place, Category category) {
         User user = userRepository.findById(userId).get();
         Event event = eventRepository.findById(eventId).get();
         return new Ticket(user, event, place, category);
@@ -242,18 +239,18 @@ public class TicketServiceImpl implements TicketService {
     /**
      * Cancel ticket boolean.
      *
-     * @param ticketId the ticket id
+     * @param objectIdId the ticket id
      * @return the boolean
      */
     @Override
-    public boolean cancelTicket(long ticketId) {
-        log.info("Start canceling a ticket with id: {}", ticketId);
+    public boolean cancelTicket(org.bson.types.ObjectId objectIdId) {
+        log.info("Start canceling a ticket with id: {}", objectIdId);
         try {
-            ticketRepository.deleteById(ticketId);
-            log.info("Successfully canceling of the ticket with id: {}", ticketId);
+            ticketRepository.deleteById(objectIdId);
+            log.info("Successfully canceling of the ticket with id: {}", objectIdId);
             return true;
         } catch (RuntimeException e) {
-            log.warn("Can not to cancel a ticket with id: {}", ticketId, e);
+            log.warn("Can not to cancel a ticket with id: {}", objectIdId, e);
             return false;
         }
     }

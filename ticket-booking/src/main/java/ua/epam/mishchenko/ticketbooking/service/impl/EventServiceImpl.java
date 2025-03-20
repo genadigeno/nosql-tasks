@@ -1,5 +1,6 @@
 package ua.epam.mishchenko.ticketbooking.service.impl;
 
+import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -45,7 +46,7 @@ public class EventServiceImpl implements EventService {
      * @return the event by id
      */
     @Override
-    public Event getEventById(long eventId) {
+    public Event getEventById(ObjectId eventId) {
         log.info("Finding an event by id: {}", eventId);
         try {
             Event event = eventRepository.findById(eventId)
@@ -199,7 +200,7 @@ public class EventServiceImpl implements EventService {
      * @return the boolean
      */
     @Override
-    public boolean deleteEvent(long eventId) {
+    public boolean deleteEvent(ObjectId eventId) {
         log.info("Start deleting an event with id: {}", eventId);
         try {
             eventRepository.deleteById(eventId);

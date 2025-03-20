@@ -1,32 +1,22 @@
 spring:
-  jpa:
-    properties:
-      hibernate:
-        format_sql: true
-        generate_statistics: true
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        cache:
-          use_second_level_cache: true
-          use_query_cache: true
-          use_structured_entries: true
-          region:
-            factory_class: org.hibernate.cache.ehcache.EhCacheRegionFactory
-      javax:
-        persistence.sharedCache.mode: ENABLE_SELECTIVE
-    show-sql: true
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/testdb
 
-  datasource:
-    url: jdbc:postgresql://localhost:5432/ticket_booking
-    username: postgres
-    password: pass
-    driver-class-name: org.postgresql.Driver
+#logging:
+#  level:
+#    root: INFO                # Default logging level for all packages
+##    org.springframework.web: DEBUG  # Enable DEBUG logs for Spring Web package
+##    com.yourpckg: TRACE     # Enable TRACE logs for your specific package
+#    org.hibernate: WARN        # Set logging level for Hibernate to WARN
+#  pattern:
+#    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"  # Customize log format for console output
+#  file:
+#    name: logs/application.log   # Log to a file
+#  logback:
+#    rollingpolicy:
+#      max-history: 30
+#      max-file-size: 10MB
 
-logging:
-  level:
-    org:
-      hibernate:
-        SQL: debug
-        type: trace
-    net:
-      sf:
-        ehcache=debug:
+mongock:
+  change-logs-scan-package: ua.epam.mishchenko.ticketbooking.db.migrations

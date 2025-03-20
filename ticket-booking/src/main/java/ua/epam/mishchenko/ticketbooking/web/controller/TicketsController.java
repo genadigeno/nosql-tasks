@@ -27,37 +27,17 @@ import java.util.Map;
 @RequestMapping("/tickets")
 public class TicketsController {
 
-    /**
-     * The constant log.
-     */
     private static final Logger log = LoggerFactory.getLogger(TicketsController.class);
 
-    /**
-     * The Booking facade.
-     */
     private final BookingFacadeImpl bookingFacade;
 
-    /**
-     * Instantiates a new Tickets controller.
-     *
-     * @param bookingFacade the booking facade
-     */
     public TicketsController(BookingFacadeImpl bookingFacade) {
         this.bookingFacade = bookingFacade;
     }
 
-    /**
-     * Book ticket model and view.
-     *
-     * @param userId   the user id
-     * @param eventId  the event id
-     * @param place    the place
-     * @param category the category
-     * @return the model and view
-     */
     @PostMapping
-    public ModelAndView bookTicket(@RequestParam long userId,
-                                   @RequestParam long eventId,
+    public ModelAndView bookTicket(@RequestParam org.bson.types.ObjectId userId,
+                                   @RequestParam org.bson.types.ObjectId eventId,
                                    @RequestParam int place,
                                    @RequestParam Category category) {
         log.info("Booking a ticket: userId={}, eventId={}, place={}, category={}", userId, eventId, place, category);
@@ -74,26 +54,12 @@ public class TicketsController {
         return new ModelAndView("ticket", model);
     }
 
-    /**
-     * Is null boolean.
-     *
-     * @param object the object
-     * @return the boolean
-     */
     private boolean isNull(Object object) {
         return object == null;
     }
 
-    /**
-     * Show tickets by user model and view.
-     *
-     * @param userId   the user id
-     * @param pageSize the page size
-     * @param pageNum  the page num
-     * @return the model and view
-     */
     @GetMapping("/user/{userId}")
-    public ModelAndView showTicketsByUser(@PathVariable long userId,
+    public ModelAndView showTicketsByUser(@PathVariable org.bson.types.ObjectId userId,
                                           @RequestParam int pageSize,
                                           @RequestParam int pageNum) {
         log.info("Showing the tickets by user with id: {}", userId);
@@ -115,16 +81,8 @@ public class TicketsController {
         return new ModelAndView("tickets", model);
     }
 
-    /**
-     * Show tickets by event model and view.
-     *
-     * @param eventId  the event id
-     * @param pageSize the page size
-     * @param pageNum  the page num
-     * @return the model and view
-     */
     @GetMapping("/event/{eventId}")
-    public ModelAndView showTicketsByEvent(@PathVariable long eventId,
+    public ModelAndView showTicketsByEvent(@PathVariable org.bson.types.ObjectId eventId,
                                            @RequestParam int pageSize,
                                            @RequestParam int pageNum) {
         log.info("Showing the tickets by event with id: {}", eventId);
@@ -146,14 +104,8 @@ public class TicketsController {
         return new ModelAndView("tickets", model);
     }
 
-    /**
-     * Cancel ticket model and view.
-     *
-     * @param id the id
-     * @return the model and view
-     */
     @DeleteMapping("/{id}")
-    public ModelAndView cancelTicket(@PathVariable long id) {
+    public ModelAndView cancelTicket(@PathVariable org.bson.types.ObjectId id) {
         log.info("Canceling ticket with id: {}", id);
         Map<String, Object> model = new HashMap<>();
         boolean isTicketCanceled = bookingFacade.cancelTicket(id);

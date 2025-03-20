@@ -1,55 +1,43 @@
 package ua.epam.mishchenko.ticketbooking.model;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.bson.types.ObjectId;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import org.hibernate.annotations.Cache;
 
+//@Setter
+//@Getter
 @Entity
 @Table(name = "user_accounts")
 @Cacheable
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+//@NoArgsConstructor
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class UserAccount {
 
-    /**
-     * The user account id.
-     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private ObjectId id;
 
-    /**
-     * The user entity.
-     */
-    @OneToOne
-    @JoinColumn(name = "user_id")
+//    @OneToOne
+//    @JoinColumn(name = "user_id")
     private User user;
 
-    /**
-     * The amount of user money.
-     */
     @Column(name = "money", nullable = false)
     private BigDecimal money;
 
     public UserAccount() {
     }
 
-    public UserAccount(User user, BigDecimal money) {
-        this.user = user;
-        this.money = money;
-    }
-
-    public UserAccount(Long id, User user, BigDecimal money) {
-        this.id = id;
-        this.user = user;
-        this.money = money;
-    }
-
-    public Long getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
@@ -68,4 +56,16 @@ public class UserAccount {
     public void setMoney(BigDecimal money) {
         this.money = money;
     }
+
+    public UserAccount(User user, BigDecimal money) {
+        this.user = user;
+        this.money = money;
+    }
+
+    public UserAccount(ObjectId id, User user, BigDecimal money) {
+        this.id = id;
+        this.user = user;
+        this.money = money;
+    }
+
 }

@@ -1,5 +1,6 @@
 package ua.epam.mishchenko.ticketbooking.service.impl;
 
+import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,7 @@ public class UserAccountServiceImpl implements UserAccountService {
     }
 
     @Override
-    public UserAccount refillAccount(long userId, BigDecimal money) {
+    public UserAccount refillAccount(ObjectId userId, BigDecimal money) {
         log.info("Refilling user account for user with id: {}", userId);
         try {
             thrownRuntimeExceptionIfMoneyLessZero(money);
@@ -46,7 +47,7 @@ public class UserAccountServiceImpl implements UserAccountService {
         }
     }
 
-    private UserAccount getUserAccountAndRefillIfNotExistCreate(long userId, BigDecimal money) {
+    private UserAccount getUserAccountAndRefillIfNotExistCreate(ObjectId userId, BigDecimal money) {
         UserAccount userAccount = userAccountRepository.findById(userId).orElse(null);
         if (userAccount == null) {
             return createNewUserAccount(userId, money);
@@ -56,7 +57,7 @@ public class UserAccountServiceImpl implements UserAccountService {
         return userAccount;
     }
 
-    private UserAccount createNewUserAccount(long userId, BigDecimal money) {
+    private UserAccount createNewUserAccount(ObjectId userId, BigDecimal money) {
         log.info("The user account with user id {} does not exist", userId);
         log.info("Creating new user account for user with id {}", userId);
         UserAccount userAccount = new UserAccount();
@@ -66,7 +67,7 @@ public class UserAccountServiceImpl implements UserAccountService {
         return userAccount;
     }
 
-    private void throwRuntimeExceptionIfUserNotExist(long userId) {
+    private void throwRuntimeExceptionIfUserNotExist(ObjectId userId) {
         if (!userRepository.existsById(userId)) {
             throw new RuntimeException("The user with id " + userId + " does not exist");
         }

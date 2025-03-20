@@ -1,5 +1,6 @@
 package ua.epam.mishchenko.ticketbooking.web.controller;
 
+import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -51,7 +52,7 @@ public class UsersController {
      * @return the model and view
      */
     @GetMapping("/{id}")
-    public ModelAndView showUserById(@PathVariable long id) {
+    public ModelAndView showUserById(@PathVariable ObjectId id) {
         log.info("Showing user by id: {}", id);
         Map<String, Object> model = new HashMap<>();
         User userById = bookingFacade.getUserById(id);
@@ -168,7 +169,7 @@ public class UsersController {
      * @return the model and view
      */
     @PutMapping
-    public ModelAndView updateUser(@RequestParam long id,
+    public ModelAndView updateUser(@RequestParam ObjectId id,
                                    @RequestParam String name,
                                    @RequestParam String email) {
         log.info("Updating user with id: {}", id);
@@ -192,7 +193,7 @@ public class UsersController {
      * @param email the email
      * @return the user
      */
-    private User createUserEntityWithId(long id, String name, String email) {
+    private User createUserEntityWithId(ObjectId id, String name, String email) {
         User user = createUserEntityWithoutId(name, email);
         user.setId(id);
         return user;
@@ -205,7 +206,7 @@ public class UsersController {
      * @return the model and view
      */
     @DeleteMapping("/{id}")
-    public ModelAndView deleteUser(@PathVariable long id) {
+    public ModelAndView deleteUser(@PathVariable ObjectId id) {
         log.info("Deleting the user with id: {}", id);
         Map<String, Object> model = new HashMap<>();
         boolean isUserRemoved = bookingFacade.deleteUser(id);

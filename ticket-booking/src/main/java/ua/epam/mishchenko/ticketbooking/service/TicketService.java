@@ -21,7 +21,7 @@ public interface TicketService {
      * @param category the category
      * @return the ticket
      */
-    Ticket bookTicket(long userId, long eventId, int place, Category category);
+    Ticket bookTicket(org.bson.types.ObjectId userId, org.bson.types.ObjectId eventId, int place, Category category);
 
     /**
      * Gets booked tickets.
@@ -46,8 +46,8 @@ public interface TicketService {
     /**
      * Cancel ticket boolean.
      *
-     * @param ticketId the ticket id
+     * @param objectIdId the ticket id
      * @return the boolean
      */
-    boolean cancelTicket(long ticketId);
+    boolean cancelTicket(org.bson.types.ObjectId objectIdId);
 }

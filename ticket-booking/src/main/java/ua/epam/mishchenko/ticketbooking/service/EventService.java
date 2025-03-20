@@ -1,5 +1,6 @@
 package ua.epam.mishchenko.ticketbooking.service;
 
+import org.bson.types.ObjectId;
 import ua.epam.mishchenko.ticketbooking.model.Event;
 
 import java.util.Date;
@@ -16,7 +17,7 @@ public interface EventService {
      * @param eventId the event id
      * @return the event by id
      */
-    Event getEventById(long eventId);
+    Event getEventById(ObjectId eventId);
 
     /**
      * Gets events by title.
@@ -60,5 +61,5 @@ public interface EventService {
      * @param eventId the event id
      * @return the boolean
      */
-    boolean deleteEvent(long eventId);
+    boolean deleteEvent(ObjectId eventId);
 }
