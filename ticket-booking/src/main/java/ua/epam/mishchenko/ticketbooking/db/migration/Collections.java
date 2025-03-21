@@ -1,4 +1,4 @@
-package ua.epam.mishchenko.ticketbooking.db.migrations;
+package ua.epam.mishchenko.ticketbooking.db.migration;
 
 public class Collections {
     public final static String EVENTS_COLLECTION = "events";

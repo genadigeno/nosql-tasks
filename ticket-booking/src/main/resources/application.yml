@@ -17,6 +17,11 @@ spring:
 #    rollingpolicy:
 #      max-history: 30
 #      max-file-size: 10MB
+#logging:
+#  level:
+#    org.springframework.data.mongodb.core.MongoTemplate: TRACE
+#    org.mongodb.driver.protocol.command: DEBUG
+#    org.springframework.data.mongodb.repository.query: DEBUG
 
 mongock:
-  change-logs-scan-package: ua.epam.mishchenko.ticketbooking.db.migrations
+  change-logs-scan-package: ua.epam.mishchenko.ticketbooking.db.migration

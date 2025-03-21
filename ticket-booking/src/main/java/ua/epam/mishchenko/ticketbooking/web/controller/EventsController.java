@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import ua.epam.mishchenko.ticketbooking.facade.impl.BookingFacadeImpl;
 import ua.epam.mishchenko.ticketbooking.model.Event;
+import ua.epam.mishchenko.ticketbooking.model.EventsAggregate;
 
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -103,6 +104,16 @@ public class EventsController {
             model.put("events", eventsByTitle);
             log.info("Events by title '{}' successfully found", title);
         }
+
+        List<EventsAggregate> statistics = bookingFacade.getEventsStatistics();
+        if (statistics.isEmpty()) {
+            model.put("messageStats", "Can not to get event stats by title");
+            log.info("Can not to get events stats by title");
+        } else {
+            model.put("statistics", statistics);
+            log.info("Event stats by title successfully found");
+        }
+
         return new ModelAndView("events", model);
     }
 

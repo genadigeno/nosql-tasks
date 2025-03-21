@@ -138,8 +138,8 @@ public class PDFUtils {
         for (Ticket ticket : tickets) {
             createAndAddCells(table,
                     String.valueOf(ticket.getId()),
-                    String.valueOf(ticket.getUser().getId()),
-                    String.valueOf(ticket.getEvent().getId()),
+                    String.valueOf(ticket.getUser()),
+                    String.valueOf(ticket.getEvent()),
                     String.valueOf(ticket.getPlace()),
                     String.valueOf(ticket.getCategory()));
         }

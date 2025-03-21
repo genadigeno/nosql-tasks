@@ -1,0 +1,52 @@
+[
+  {
+    "_id": { "$oid": "60b8d8bfc4f1b32f8c9dcb34" },
+    "title": "Food Festival",
+    "date": { "$date": "2025-06-15T11:00:00Z" },
+    "ticket_price": 15.99,
+    "tickets": [
+      { "$oid": "60b8d8bfc4f1b32f8c9dcb36" },
+      { "$oid": "60b8d8bfc4f1b32f8c9dcb37" }
+    ]
+  },
+  {
+    "_id": { "$oid": "60b8d8bfc4f1b32f8c9dcb38" },
+    "title": "Jazz Night",
+    "date": { "$date": "2025-06-20T10:00:00Z" },
+    "ticket_price": 19.99,
+    "tickets": [
+      { "$oid": "60b8d8bfc4f1b32f8c9dcb39" },
+      { "$oid": "60b8d8bfc4f1b32f8c9dcb3a" }
+    ]
+  },
+  {
+    "_id": { "$oid": "60b8d8bfc4f1b32f8c9dcb3b" },
+    "title": "Rock Concert",
+    "date": { "$date": "2025-06-25T18:30:00Z" },
+    "ticket_price": 39.99,
+    "tickets": [
+      { "$oid": "60b8d8bfc4f1b32f8c9dcb3c" },
+      { "$oid": "60b8d8bfc4f1b32f8c9dcb3d" }
+    ]
+  },
+  {
+    "_id": { "$oid": "60b8d8bfc4f1b32f8c9dcb3e" },
+    "title": "Music Festival",
+    "date": { "$date": "2025-07-01T14:00:00Z" },
+    "ticket_price": 89.99,
+    "tickets": [
+      { "$oid": "60b8d8bfc4f1b32f8c9dcb3f" },
+      { "$oid": "60b8d8bfc4f1b32f8c9dcb40" }
+    ]
+  },
+  {
+    "_id": { "$oid": "60b8d8bfc4f1b32f8c9dcb41" },
+    "title": "Rock Concert",
+    "date": { "$date": "2025-07-05T19:00:00Z" },
+    "ticket_price": 199.99,
+    "tickets": [
+      { "$oid": "60b8d8bfc4f1b32f8c9dcb42" },
+      { "$oid": "60b8d8bfc4f1b32f8c9dcb43" }
+    ]
+  }
+]

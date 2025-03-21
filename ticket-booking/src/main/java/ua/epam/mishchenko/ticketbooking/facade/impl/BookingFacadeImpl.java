@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 import ua.epam.mishchenko.ticketbooking.facade.BookingFacade;
 import ua.epam.mishchenko.ticketbooking.model.*;
 import ua.epam.mishchenko.ticketbooking.model.Ticket;
+import ua.epam.mishchenko.ticketbooking.repository.EventRepository;
 import ua.epam.mishchenko.ticketbooking.service.EventService;
 import ua.epam.mishchenko.ticketbooking.service.TicketService;
 import ua.epam.mishchenko.ticketbooking.service.UserAccountService;
@@ -38,6 +39,7 @@ public class BookingFacadeImpl implements BookingFacade {
      * The User Account service.
      */
     private final UserAccountService userAccountService;
+    private final EventRepository eventRepository;
 
     /**
      * Instantiates a new Booking facade.
@@ -48,11 +50,12 @@ public class BookingFacadeImpl implements BookingFacade {
      * @param userAccountService the user account service
      */
     public BookingFacadeImpl(EventService eventService, UserService userService, TicketService ticketService,
-                             UserAccountService userAccountService) {
+                             UserAccountService userAccountService, EventRepository eventRepository) {
         this.eventService = eventService;
         this.ticketService = ticketService;
         this.userService = userService;
         this.userAccountService = userAccountService;
+        this.eventRepository = eventRepository;
     }
 
     /**
@@ -246,5 +249,10 @@ public class BookingFacadeImpl implements BookingFacade {
 
     public UserAccount refillUserAccount(org.bson.types.ObjectId userId, BigDecimal money) {
         return userAccountService.refillAccount(userId, money);
+    }
+
+    @Override
+    public List<EventsAggregate> getEventsStatistics() {
+        return eventRepository.groupByTitle();
     }
 }

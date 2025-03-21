@@ -83,8 +83,8 @@ public class TicketsController {
 
     @GetMapping("/event/{eventId}")
     public ModelAndView showTicketsByEvent(@PathVariable org.bson.types.ObjectId eventId,
-                                           @RequestParam int pageSize,
-                                           @RequestParam int pageNum) {
+                                           @RequestParam(defaultValue = "10") int pageSize,
+                                           @RequestParam(defaultValue = "1") int pageNum) {
         log.info("Showing the tickets by event with id: {}", eventId);
         Map<String, Object> model = new HashMap<>();
         Event eventById = bookingFacade.getEventById(eventId);

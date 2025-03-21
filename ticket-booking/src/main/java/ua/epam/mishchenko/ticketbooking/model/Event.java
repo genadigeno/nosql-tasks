@@ -37,7 +37,7 @@ public class Event {
     private BigDecimal ticketPrice;
 
     @Field(name = "tickets")
-    private List<ObjectId> tickets = new ArrayList<>();
+    private List<ObjectId> tickets = new ArrayList<>();//Normalized modeling: one-to-many
 
     public Event() {
     }

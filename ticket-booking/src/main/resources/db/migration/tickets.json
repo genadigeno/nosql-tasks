@@ -1,0 +1,51 @@
+[
+  {
+    "_id": { "$oid": "60b8d8bfc4f1b32f8c9dcb2b" },
+    "user": { "$oid": "60b8d8bfc4f1b32f8c9dcb34" },
+    "event": { "$oid": "60b8d8bfc4f1b32f8c9dcb2a" },
+    "place": 1,
+    "category": "VIP"
+  },
+  {
+    "_id": { "$oid": "60b8d8bfc4f1b32f8c9dcb2c" },
+    "user": { "$oid": "60b8d8bfc4f1b32f8c9dcb35" },
+    "event": { "$oid": "60b8d8bfc4f1b32f8c9dcb2a" },
+    "place": 2,
+    "category": "PREMIUM"
+  },
+  {
+    "_id": { "$oid": "60b8d8bfc4f1b32f8c9dcb2e" },
+    "user": { "$oid": "60b8d8bfc4f1b32f8c9dcb36" },
+    "event": { "$oid": "60b8d8bfc4f1b32f8c9dcb2d" },
+    "place": 3,
+    "category": "VIP"
+  },
+  {
+    "_id": { "$oid": "60b8d8bfc4f1b32f8c9dcb2f" },
+    "user": { "$oid": "60b8d8bfc4f1b32f8c9dcb37" },
+    "event": { "$oid": "60b8d8bfc4f1b32f8c9dcb2d" },
+    "place": 4,
+    "category": "GENERAL"
+  },
+  {
+    "_id": { "$oid": "60b8d8bfc4f1b32f8c9dcb30" },
+    "user": { "$oid": "60b8d8bfc4f1b32f8c9dcb38" },
+    "event": { "$oid": "60b8d8bfc4f1b32f8c9dcb2d" },
+    "place": 5,
+    "category": "STANDARD"
+  },
+  {
+    "_id": { "$oid": "60b8d8bfc4f1b32f8c9dcb32" },
+    "user": { "$oid": "60b8d8bfc4f1b32f8c9dcb39" },
+    "event": { "$oid": "60b8d8bfc4f1b32f8c9dcb31" },
+    "place": 6,
+    "category": "VIP"
+  },
+  {
+    "_id": { "$oid": "60b8d8bfc4f1b32f8c9dcb33" },
+    "user": { "$oid": "60b8d8bfc4f1b32f8c9dcb40" },
+    "event": { "$oid": "60b8d8bfc4f1b32f8c9dcb31" },
+    "place": 7,
+    "category": "PREMIUM"
+  }
+]

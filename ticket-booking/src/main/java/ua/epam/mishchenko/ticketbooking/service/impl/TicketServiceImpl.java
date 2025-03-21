@@ -1,5 +1,6 @@
 package ua.epam.mishchenko.ticketbooking.service.impl;
 
+import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -58,7 +59,7 @@ public class TicketServiceImpl implements TicketService {
      */
     @Override
     @Transactional(isolation = Isolation.SERIALIZABLE)
-    public Ticket bookTicket(org.bson.types.ObjectId userId, org.bson.types.ObjectId eventId, int place, Category category) {
+    public Ticket bookTicket(ObjectId userId, ObjectId eventId, int place, Category category) {
         log.info("Start booking a ticket for user with id {}, event with id event {}, place {}, category {}",
                 userId, eventId, place, category);
         try {
@@ -107,7 +108,7 @@ public class TicketServiceImpl implements TicketService {
     }
 
     private void throwRuntimeExceptionIfTicketAlreadyBooked(org.bson.types.ObjectId eventId, int place, Category category) {
-        if (ticketRepository.existsByEventIdAndPlaceAndCategory(eventId, place, category)) {
+        if (ticketRepository.existsByEventAndPlaceAndCategory(eventId, place, category)) {
             throw new RuntimeException("This ticket already booked");
         }
     }
@@ -147,10 +148,10 @@ public class TicketServiceImpl implements TicketService {
      * @param category the category
      * @return the ticket
      */
-    private Ticket createNewTicket(org.bson.types.ObjectId userId, org.bson.types.ObjectId eventId, int place, Category category) {
+    private Ticket createNewTicket(ObjectId userId, ObjectId eventId, int place, Category category) {
         User user = userRepository.findById(userId).get();
         Event event = eventRepository.findById(eventId).get();
-        return new Ticket(user, event, place, category);
+        return new Ticket(user.getId(), event.getId(), place, category);
     }
 
     /**
@@ -171,7 +172,7 @@ public class TicketServiceImpl implements TicketService {
                 return new ArrayList<>();
             }
             System.out.println(ticketRepository.findAll());
-            Page<Ticket> ticketsByUser = ticketRepository.getAllByUserId(
+            Page<Ticket> ticketsByUser = ticketRepository.getAllByUser(
                     PageRequest.of(pageNum - 1, pageSize), user.getId());
             if (!ticketsByUser.hasContent()) {
                 throw new RuntimeException("Can not to fina a list of booked tickets by user with id: " + user.getId());
@@ -212,7 +213,8 @@ public class TicketServiceImpl implements TicketService {
                 log.warn("The event can not be a null");
                 return new ArrayList<>();
             }
-            Page<Ticket> ticketsByEvent = ticketRepository.getAllByEventId(
+
+            Page<Ticket> ticketsByEvent = ticketRepository.getAllByEvent(
                     PageRequest.of(pageNum - 1, pageSize), event.getId());
             if (!ticketsByEvent.hasContent()) {
                 throw new RuntimeException("Can not to fina a list of booked tickets by event with id: " + event.getId());

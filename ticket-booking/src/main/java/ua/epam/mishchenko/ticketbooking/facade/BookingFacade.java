@@ -1,9 +1,6 @@
 package ua.epam.mishchenko.ticketbooking.facade;
 
-import ua.epam.mishchenko.ticketbooking.model.Category;
-import ua.epam.mishchenko.ticketbooking.model.Event;
-import ua.epam.mishchenko.ticketbooking.model.Ticket;
-import ua.epam.mishchenko.ticketbooking.model.User;
+import ua.epam.mishchenko.ticketbooking.model.*;
 
 import java.util.Date;
 import java.util.List;
@@ -140,4 +137,5 @@ public interface BookingFacade {
      */
     boolean cancelTicket(org.bson.types.ObjectId objectIdId);
 
+    List<EventsAggregate> getEventsStatistics();
 }

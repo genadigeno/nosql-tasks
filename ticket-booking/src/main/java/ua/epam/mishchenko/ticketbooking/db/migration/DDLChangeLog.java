@@ -1,4 +1,4 @@
-package ua.epam.mishchenko.ticketbooking.db.migrations;
+package ua.epam.mishchenko.ticketbooking.db.migration;
 
 import com.github.cloudyrock.mongock.ChangeLog;
 import com.github.cloudyrock.mongock.ChangeSet;
@@ -6,7 +6,7 @@ import com.github.cloudyrock.mongock.driver.mongodb.springdata.v3.decorator.impl
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static ua.epam.mishchenko.ticketbooking.db.migrations.Collections.*;
+import static ua.epam.mishchenko.ticketbooking.db.migration.Collections.*;
 
 @ChangeLog(order = "001")
 public class DDLChangeLog {
@@ -43,13 +43,4 @@ public class DDLChangeLog {
             log.info("Collection '{}' created successfully.", USER_ACCOUNTS_COLLECTION);
         }
     }
-
-    /*@ChangeSet(order = "000", id = "create_events_indexes", author = "Geno")
-    public void createIndexes(MongoTemplate mongoTemplate) {
-        mongoTemplate.getCollection(COLLECTION).createIndex(
-                new Document("email", 1),
-                new IndexOptions().unique(true)
-        );
-        log.info("Unique index on 'email' created successfully.");
-    }*/
 }

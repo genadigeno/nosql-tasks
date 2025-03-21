@@ -3,6 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>Events</title>
+    <style>
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+            font-family: Arial, sans-serif;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            color: #495057;
+            font-weight: bold;
+            padding: 12px 15px;
+            text-align: left;
+            border-top: 1px solid #dee2e6;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        td, th {
+            border: 1px solid #dee2e6;
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        #id {
+            width: 10%;
+        }
+
+        #title {
+            width: 50%;
+        }
+
+        #date {
+            width: 40%;
+        }
+    </style>
 </head>
 <body>
 <p style="color: red" th:if="${message != null}" th:text="${message}"></p>
@@ -13,11 +57,33 @@
         <th id="id">ID</th>
         <th id="title">Title</th>
         <th id="date">Date</th>
+        <th id="events">Tickets</th>
     </tr>
     <tr th:each="event : ${events}">
         <th th:text="${event.getId()}">id</th>
         <th th:text="${event.getTitle()}">title</th>
         <th th:text="${event.getDate()}">date</th>
+        <th>
+            <a th:href="@{/tickets/event/{id}(id=${event.getId()})}">Tickets Details</a>
+        </th>
+    </tr>
+    </tbody>
+</table>
+<br>
+<p style="color: red" th:if="${statistics != null}" th:text="${messageStats}"></p>
+<table th:if="${statistics != null}">
+    <caption>All Events stats</caption>
+    <tbody>
+    <tr>
+        <th id="Event_Title">Title</th>
+        <th id="Total">Total</th>
+        <th id="AveragePrice">AveragePrice</th>
+    </tr>
+    <tr th:each="stat : ${statistics}">
+        <!--/*@thymesVar id="get_id" type="java.lang.String"*/-->
+        <th th:text="${stat.get_id()}">title</th>
+        <th th:text="${stat.getCount()}">count</th>
+        <th th:text="${stat.getAverage()}">average</th>
     </tr>
     </tbody>
 </table>

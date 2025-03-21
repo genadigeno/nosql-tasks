@@ -4,5 +4,6 @@ public enum Category {
     PREMIUM,
     STANDARD,
     BAR,
-    VIP
+    VIP,
+    GENERAL
 }

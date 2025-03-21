@@ -1,9 +1,8 @@
 package ua.epam.mishchenko.ticketbooking.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import org.bson.types.ObjectId;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.hibernate.annotations.Cache;
@@ -14,19 +13,19 @@ import java.util.Objects;
 @Document(collection = "tickets")
 @Cacheable
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@NoArgsConstructor
-@Getter @Setter
 public class Ticket {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private org.bson.types.ObjectId id;
 
+    //@DBRef
     @Field(name = "user")
-    private User user; // Embedded User
+    private ObjectId user;//Normalized modeling
 
+    //@DBRef
     @Field(name = "event")
-    private Event event; // Embedded Event
+    private ObjectId event;//Normalized modeling
 
     @Field(name = "place")
     private Integer place;
@@ -35,7 +34,10 @@ public class Ticket {
     @Field(name = "category")
     private Category category;
 
-    public Ticket(org.bson.types.ObjectId id, User user, Event event, int place, Category category) {
+    public Ticket() {
+    }
+
+    public Ticket(ObjectId id, ObjectId user, ObjectId event, int place, Category category) {
         this.id = id;
         this.user = user;
         this.event = event;
@@ -43,7 +45,7 @@ public class Ticket {
         this.category = category;
     }
 
-    public Ticket(User user, Event event, int place, Category category) {
+    public Ticket(ObjectId user, ObjectId event, int place, Category category) {
         this.user = user;
         this.event = event;
         this.place = place;
@@ -58,19 +60,19 @@ public class Ticket {
         this.id = id;
     }
 
-    public User getUser() {
+    public ObjectId getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(ObjectId user) {
         this.user = user;
     }
 
-    public Event getEvent() {
+    public ObjectId getEvent() {
         return event;
     }
 
-    public void setEvent(Event event) {
+    public void setEvent(ObjectId event) {
         this.event = event;
     }
 
@@ -105,8 +107,8 @@ public class Ticket {
     public String toString() {
         return "{" +
                 "'id' : " + id +
-                ", 'userId' : " + user.getId() +
-                ", 'eventId' : " + event.getId() +
+                ", 'userId' : " + user +
+                ", 'eventId' : " + event +
                 ", 'place' : " + place +
                 ", 'category' : '" + category +
                 "'}";
