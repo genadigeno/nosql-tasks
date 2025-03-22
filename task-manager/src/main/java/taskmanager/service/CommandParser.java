@@ -91,7 +91,7 @@ public class CommandParser implements Parser {
                 String fields = input.substring(input.indexOf("--body") + "--body".length()+1);
                 Map<String, Object> fieldMap = buildQueryMap(fields);
 
-                return new TaskModification(queryMap, fieldMap);
+                return new TaskModification(fieldMap, queryMap);
             }
         }
 

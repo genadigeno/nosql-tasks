@@ -50,7 +50,7 @@ public class TaskManager {
         });
 
         taskQuery.update(updateOperators)
-                .execute();
+                .execute(new UpdateOptions().multi(true));
 
         log.info("Updated tasks");
     }

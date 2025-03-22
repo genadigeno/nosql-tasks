@@ -1,87 +1,89 @@
-{
-    "_id" : ObjectId("67dd3be4a11df8621f76b3bc"),
-    "_t" : "Task",
-    "created" : ISODate("2025-03-21T14:13:55.992+0000"),
-    "deadline" : ISODate("2025-03-22T14:13:55.992+0000"),
-    "name" : "Test Task",
-    "description" : "Test Description",
-    "category" : "CRITICAL"
-}
-{
-    "_id" : ObjectId("67dd75a7ec3afd553011d165"),
-    "_t" : "Task",
-    "created" : ISODate("2025-03-21T18:20:23.440+0000"),
-    "deadline" : ISODate("2025-03-22T18:20:23.440+0000"),
-    "name" : "other",
-    "description" : "dummy description"
-}
-{
-    "_id" : ObjectId("67dd7707b2bf037abe154cd1"),
-    "_t" : "Task",
-    "created" : ISODate("2025-03-21T18:26:15.334+0000"),
-    "deadline" : ISODate("2025-03-20T18:26:15.334+0000"),
-    "name" : "dummy name",
-    "description" : "dummy description",
-    "category" : "CRITICAL"
-}
-{
-    "_id" : ObjectId("67dd7a0a62e85d657bea6dbd"),
-    "_t" : "Task",
-    "created" : ISODate("2025-03-21T18:39:06.126+0000"),
-    "deadline" : ISODate("2025-03-22T18:39:06.126+0000"),
-    "name" : "dummy name",
-    "description" : "dummy description",
-    "category" : "FUTURE",
-    "subtasks" : [
-        {
-            "_t" : "SubTask",
-            "name" : "to do",
-            "description" : "not done"
-        },
-        {
-            "_t" : "SubTask",
-            "name" : "future task",
-            "description" : "will b done"
-        },
-        {
-            "_t" : "SubTask",
-            "name" : "send email",
-            "description" : "sending"
-        }
-    ]
-}
-{
-    "_id" : ObjectId("67dd7a2c62e85d657bea6dbe"),
-    "_t" : "Task",
-    "created" : ISODate("2025-03-21T18:39:40.827+0000"),
-    "deadline" : ISODate("2025-03-22T18:39:40.827+0000"),
-    "name" : "dummy name",
-    "description" : "dummy description",
-    "category" : "FUTURE",
-    "subtasks" : [
-        {
-            "_t" : "SubTask",
-            "name" : "wait",
-            "description" : "waiting"
-        },
-        {
-            "_t" : "SubTask",
-            "name" : "future task",
-            "description" : "will b done"
-        },
-        {
-            "_t" : "SubTask",
-            "name" : "send email",
-            "description" : "sending"
-        }
-    ]
-}
-{
-    "_id" : ObjectId("67dd996bb3d60b6595e05d07"),
-    "_t" : "Task",
-    "created" : ISODate("2025-03-21T20:52:57.069+0000"),
-    "deadline" : ISODate("2025-03-22T20:52:57.069+0000"),
-    "name" : "Test Task",
-    "description" : "Test Description",
-    "category" : "CRITICAL"
-}
+[
+    {
+        "_id": { "$oid": "67dd3be4a11df8621f76b3bc" },
+        "_t": "Task",
+        "created": { "$date": "2025-03-21T14:13:55.992Z" },
+        "deadline": { "$date": "2025-03-22T14:13:55.992Z" },
+        "name": "Test Task",
+        "description": "Test Description",
+        "category": "CRITICAL"
+    },
+    {
+        "_id": { "$oid": "67dd75a7ec3afd553011d165" },
+        "_t": "Task",
+        "created": { "$date": "2025-03-21T18:20:23.440Z" },
+        "deadline": { "$date": "2025-03-22T18:20:23.440Z" },
+        "name": "other",
+        "description": "dummy description"
+    },
+    {
+        "_id": { "$oid": "67dd7707b2bf037abe154cd1" },
+        "_t": "Task",
+        "created": { "$date": "2025-03-21T18:26:15.334Z" },
+        "deadline": { "$date": "2025-03-20T18:26:15.334Z" },
+        "name": "dummy name",
+        "description": "dummy description",
+        "category": "CRITICAL"
+    },
+    {
+        "_id": { "$oid": "67dd7a0a62e85d657bea6dbd" },
+        "_t": "Task",
+        "created": { "$date": "2025-03-21T18:39:06.126Z" },
+        "deadline": { "$date": "2025-03-22T18:39:06.126Z" },
+        "name": "dummy name",
+        "description": "dummy description",
+        "category": "FUTURE",
+        "subtasks": [
+            {
+                "_t": "SubTask",
+                "name": "to do",
+                "description": "not done"
+            },
+            {
+                "_t": "SubTask",
+                "name": "future task",
+                "description": "will b done"
+            },
+            {
+                "_t": "SubTask",
+                "name": "send email",
+                "description": "sending"
+            }
+        ]
+    },
+    {
+        "_id": { "$oid": "67dd7a2c62e85d657bea6dbe" },
+        "_t": "Task",
+        "created": { "$date": "2025-03-21T18:39:40.827Z" },
+        "deadline": { "$date": "2025-03-22T18:39:40.827Z" },
+        "name": "dummy name",
+        "description": "dummy description",
+        "category": "FUTURE",
+        "subtasks": [
+            {
+                "_t": "SubTask",
+                "name": "wait",
+                "description": "waiting"
+            },
+            {
+                "_t": "SubTask",
+                "name": "future task",
+                "description": "will b done"
+            },
+            {
+                "_t": "SubTask",
+                "name": "send email",
+                "description": "sending"
+            }
+        ]
+    },
+    {
+        "_id": { "$oid": "67dd996bb3d60b6595e05d07" },
+        "_t": "Task",
+        "created": { "$date": "2025-03-21T20:52:57.069Z" },
+        "deadline": { "$date": "2025-03-22T20:52:57.069Z" },
+        "name": "Test Task",
+        "description": "Test Description",
+        "category": "CRITICAL"
+    }
+]

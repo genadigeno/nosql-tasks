@@ -19,11 +19,9 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private org.bson.types.ObjectId id;
 
-    //@DBRef
     @Field(name = "user")
     private ObjectId user;//Normalized modeling
 
-    //@DBRef
     @Field(name = "event")
     private ObjectId event;//Normalized modeling
 
